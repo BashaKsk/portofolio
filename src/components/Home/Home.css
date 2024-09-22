@@ -1,0 +1,13 @@
+.fade-in-up {
+  opacity: 0; /* Start invisible */
+  transform: translateY(20px); /* Start slightly below */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+  transition-duration: 1000s; 
+}
+
+.typewriter-text {
+
+  font-family: "Exo 2", sans-serif !important;
+  font-optical-sizing: auto;
+
+}

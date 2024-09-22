@@ -1,0 +1,10 @@
+body {
+  box-sizing: border-box !important;
+  background-color: #202022 !important;
+  font-family: "Open Sans", sans-serif;
+  color: #f3f7f0 !important;
+}
+
+* {
+  font-family: "Open Sans", sans-serif;
+}
