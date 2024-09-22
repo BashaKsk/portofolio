@@ -2,16 +2,36 @@ import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Home.css";
-import { Avatar, Box, Grid, Paper, Typography } from "@mui/material";
+import { Avatar, Box, Grid, Paper } from "@mui/material";
 import Tilt from "react-parallax-tilt";
 import { Typewriter } from "react-simple-typewriter";
 import profilePic from "../../assets/profile.png";
 import { useTranslation } from "react-i18next";
+import { Popover, Steps, Typography } from "antd";
+import {
+  TrophyOutlined,
+  CheckOutlined,
+  SolutionOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 
+import type { StepsProps } from "antd";
 interface HomeProps {
   // Additional props...
   home?: HomeType;
 }
+
+const customDot: StepsProps["progressDot"] = (dot, { status, index }) => (
+  <Popover
+    content={
+      <span>
+        step {index} status: {status}
+      </span>
+    }
+  >
+    {dot}
+  </Popover>
+);
 
 type HomeType = string | number | boolean;
 
@@ -26,9 +46,7 @@ const Home: React.FC<HomeProps> = () => {
       //   mirror: false, // Whether to reflect the animation in case of page flipping
     });
   }, []);
-
-  const [glare, setGlare] = useState(false);
-
+  const description = "You can hover on the dot.";
   return (
     <Box
       id="home"
@@ -47,7 +65,7 @@ const Home: React.FC<HomeProps> = () => {
       <Tilt
         className="parallax-effect"
         glareEnable={true}
-        // glareMaxOpacity={0.45}
+        glareMaxOpacity={0.45}
         glareColor="#1b1b1e"
         glarePosition="all"
         style={{
@@ -58,7 +76,7 @@ const Home: React.FC<HomeProps> = () => {
         tiltAngleYInitial={15}
       >
         <Paper
-          data-aos="fade-right"
+          data-aos="zoom-in"
           elevation={0}
           sx={{ bgcolor: "transparent", color: "#f3f7f0" }}
         >
@@ -97,60 +115,190 @@ const Home: React.FC<HomeProps> = () => {
               <Box
                 sx={{
                   display: "flex",
-                  gap: 2,
-
-                  alignItems: "center",
-                  flexDirection: { xs: "column", sm: "row" },
+                  flexDirection: "column",
+                  height: "400px",
+                  justifyContent: "space-between",
+                  // alignItems: "center",
                 }}
               >
-                <Typography
+                <Box
                   sx={{
-                    // color: "#f3f7f0",
-                    fontSize: {
-                      xs: 20, // Smaller font size for extra-small screens
-                      sm: 30, // Default font size for small screens and above
-                    },
-                  }}
-                >
-                  {t("welcome")}
-                </Typography>
+                    display: "flex",
+                    gap: 2,
 
-                <Typography
-                  className="typewriter-text"
-                  sx={{
-                    display: "inline-block",
-                    color: "#9ba9ff",
-                    // fontFamily: "Exo 2, sans-serif",
-                    fontWeight: "bold",
-                    fontSize: {
-                      xs: 20, // Smaller font size for extra-small screens
-                      sm: 25, // Default font size for small screens and above
-                    },
+                    alignItems: "center",
+                    flexDirection: { xs: "column", sm: "row" },
                   }}
                 >
-                  <Typewriter
-                    words={[
-                      "I'm a Full Stack Developer",
-                      "Proficient in React & Node.js",
-                      "Passionate about coding",
-                      "Lifelong learner",
+                  <Typography
+                    style={{
+                      fontSize: "30px",
+                      color: "#f3f7f0",
+                    }}
+                    // sx={{
+                    //   // color: "#f3f7f0",
+                    //   fontSize: {
+                    //     xs: 20, // Smaller font size for extra-small screens
+                    //     sm: 30, // Default font size for small screens and above
+                    //   },
+                    // }}
+                  >
+                    {t("welcome")}
+                  </Typography>
+
+                  <Typography
+                    className="typewriter-text"
+                    style={{
+                      display: "inline-block",
+                      color: "#dda15e",
+                      // fontFamily: "Exo 2, sans-serif",
+                      fontWeight: "bold",
+                      fontSize: "30px",
+                      // fontSize: {
+                      //   xs: 20, // Smaller font size for extra-small screens
+                      //   sm: 25, // Default font size for small screens and above
+                      // },
+                    }}
+                  >
+                    <Typewriter
+                      words={[
+                        "Full Stack Developer",
+                        "Passionate Coder",
+                      ]}
+                      loop={true}
+                      cursor
+                      typeSpeed={70}
+                      deleteSpeed={50}
+                      delaySpeed={1000}
+                    />
+                  </Typography>
+                </Box>
+                <Box sx={{ mt: 0 }}>
+                  <Steps
+                    current={4}
+                  
+                    
+                    items={[
+                      {
+                        title: "Role",
+                        description: (
+                          <div>
+                            <p>
+                              I'm a Full Stack Developer, proficient in React
+                              and Node.js. I'm passionate about coding, and I'm
+                              a lifelong learner.
+                            </p>
+                          </div>
+                        ),
+                        icon: (
+                          <Box
+                            sx={{
+                              bgcolor: "#f3f7f0",
+                              width: "40px",
+                              height: "40px",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              borderRadius: 5,
+                            }}
+                          >
+                            <UserOutlined
+                              style={{ fontSize: "35px", color: "#7209b7" }}
+                            />
+                          </Box>
+                        ),
+                      },
+                      {
+                        title: "Identity",
+                        description: (
+                          <div>
+                            <p>
+                              As a professional developer, I take pride in
+                              delivering clean, efficient, and scalable code
+                              while constantly improving my skills.
+                            </p>
+                          </div>
+                        ),
+                        icon: (
+                          <Box
+                            sx={{
+                              bgcolor: "#f3f7f0",
+                              width: "40px",
+                              height: "40px",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              borderRadius: 5,
+                            }}
+                          >
+                            <SolutionOutlined
+                              style={{ fontSize: "30px", color: "#f72585" }}
+                            />
+                          </Box>
+                        ),
+                      },
+                      {
+                        title: "Projects",
+                        description: (
+                          <div>
+                            <p>
+                              I have successfully completed over 50 projects,
+                              ranging from small business websites to complex
+                              web applications.
+                            </p>
+                          </div>
+                        ),
+                        icon: (
+                          <Box
+                            sx={{
+                              bgcolor: "#f3f7f0",
+                              width: "40px",
+                              height: "40px",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              borderRadius: 5,
+                            }}
+                          >
+                            <CheckOutlined
+                              style={{ fontSize: "30px", color: "#00171f" }}
+                            />
+                          </Box>
+                        ),
+                      },
+                      {
+                        title: "Certifications",
+                        description: (
+                          <div>
+                            <p>
+                              I am certified in key technologies such as React,
+                              Node.js, and MongoDB, showcasing my proficiency
+                              and commitment to continuous learning.
+                            </p>
+                          </div>
+                        ),
+                        icon: (
+                          <Box
+                            sx={{
+                              bgcolor: "#f3f7f0",
+                              width: "40px",
+                              height: "40px",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              borderRadius: 5,
+                            }}
+                          >
+                            <TrophyOutlined
+                              style={{ fontSize: "30px", color: "red" }}
+                            />
+                          </Box>
+                        ),
+                      },
                     ]}
-                    loop={true}
-                    cursor
-                    typeSpeed={70}
-                    deleteSpeed={50}
-                    delaySpeed={1000}
                   />
-                </Typography>
+                </Box>
               </Box>
-              <p>
-                I'm a passionate and skilled Full-Stack Developer with
-                experience in building dynamic, responsive, and scalable web
-                applications. With expertise in both front-end and back-end
-                development, I enjoy taking on challenges across the entire
-                stack, from designing intuitive user interfaces to architecting
-                robust server-side solutions.
-              </p>
             </Grid>
           </Grid>
         </Paper>
@@ -160,3 +308,25 @@ const Home: React.FC<HomeProps> = () => {
 };
 
 export default Home;
+
+// import React from 'react';
+// import type { StepsProps } from 'antd';
+// import { Popover, Steps } from 'antd';
+
+// const customDot: StepsProps['progressDot'] = (dot, { status, index }) => (
+//   <Popover
+//     content={
+//       <span>
+//         step {index} status: {status}
+//       </span>
+//     }
+//   >
+//     {dot}
+//   </Popover>
+// );
+// const description = 'You can hover on the dot.';
+// const App: React.FC = () => (
+
+// );
+
+// export default App;

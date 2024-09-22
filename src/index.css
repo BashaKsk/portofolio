@@ -8,3 +8,18 @@ body {
 * {
   font-family: "Open Sans", sans-serif;
 }
+
+/* Override the line color */
+.ant-steps-item-tail::after {
+  background-color: #f3f7f0 !important;
+}
+
+/* Override the title text color */
+.ant-steps-item-title {
+  color: #f3f7f0 !important;
+}
+
+/* Override the description text color */
+.ant-steps-item-description {
+  color: #f3f7f0 !important;
+}

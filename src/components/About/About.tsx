@@ -1,12 +1,12 @@
 import React from "react";
-import { Row, Col, Card, Statistic, Timeline, Divider } from "antd";
+import { Row, Col, Card, Statistic, Timeline, Divider, Flex } from "antd";
 import {
   ClockCircleOutlined,
   CodeOutlined,
   DeploymentUnitOutlined,
 } from "@ant-design/icons";
 import "./About.css"; // Optional: for custom styling
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const About = () => {
   return (
@@ -15,39 +15,49 @@ const About = () => {
       <Divider />
 
       {/* Statistics Section */}
-      <Row gutter={12} className="stats-row">
-        <Col xs={12} md={8} span={5}>
-        <Card className="stat-card">
-  <Statistic
-    title="Years of Experience"
-    value={3}
-    prefix={<ClockCircleOutlined style={{ color: "white" }} />}
-    style={{ color: "white" }} // Apply white color to the text
-  />
-</Card>
-        </Col>
-        <Col xs={12} md={8}>
+      <Row gutter={[20, 20]} className="stats-row">
+        <Col data-aos="fade-in" data-aos-duration="500" xs={24} md={8} span={5}>
           <Card className="stat-card">
-            <Statistic
-              title="Projects Completed"
-              value={35}
-              prefix={<CodeOutlined />}
-            />
+            <Typography style={{ color: "white" }}>
+              Years of Experience
+            </Typography>
+            <Flex justify="center" gap={5}>
+              <ClockCircleOutlined style={{ color: "white" }} />
+              <p>12</p>
+            </Flex>
           </Card>
         </Col>
-        <Col xs={12} md={8}>
+        <Col data-aos="fade-in" data-aos-duration="700" xs={24} md={8}>
           <Card className="stat-card">
-            <Statistic
-              title="Tech Stacks Mastered"
-              value={10}
-              prefix={<DeploymentUnitOutlined />}
-            />
+            <Typography style={{ color: "white" }}>
+              Projects Completed
+            </Typography>
+            <Flex justify="center" gap={5}>
+              <CodeOutlined style={{ color: "white" }} />
+              <p>35</p>
+            </Flex>
+          </Card>
+        </Col>
+        <Col data-aos="fade-in" data-aos-duration="900" xs={24} md={8}>
+          <Card className="stat-card">
+            <Typography style={{ color: "white" }}>
+              Tech Stacks Mastered
+            </Typography>
+            <Flex justify="center" gap={5}>
+              <DeploymentUnitOutlined style={{ color: "white" }} />
+              <p>10</p>
+            </Flex>
           </Card>
         </Col>
       </Row>
 
       {/* Timeline Section */}
-      <Box sx={{ px: 5, width: "100%" }}>
+      <Box
+        data-aos="zoom-out"
+        data-aos-duration="1000"
+        className="about-container"
+        sx={{ px: 5, width: "100%" }}
+      >
         <Card className="timeline-card">
           <Timeline mode="alternate">
             <Timeline.Item>

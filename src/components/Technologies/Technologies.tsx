@@ -15,7 +15,7 @@ import {
 import "./Technologies.css"; // Optional: for custom styling
 
 const technologies = [
-  { name: "JavaScript", icon: <JavaScriptOutlined /> },
+  { name: "JavaScript", icon: <JavaScriptOutlined style={{color : "#fcca46"}} /> },
   { name: "TypeScript", icon: <JavaScriptOutlined /> },
   { name: "React", icon: <JavaScriptOutlined /> },
   { name: "Next.js", icon: <JavaScriptOutlined /> }, // Change icon as needed
@@ -29,10 +29,18 @@ const technologies = [
 const TechnologiesPage = () => {
   return (
     <div id="tech" className="technologies-container">
-      <h1 className="technologies-title">Technologies I Know</h1>
-      <Row gutter={16} justify="center">
-        {technologies.map((tech) => (
-          <Col xs={12} sm={8} md={6} lg={4} key={tech.name}>
+      {/* <h1 className="technologies-title">Technologies I Know</h1> */}
+      <Row gutter={[20,20]} style={{marginTop : '50px'}} justify="center">
+        {technologies.map((tech, index) => (
+          <Col
+            data-aos="fade-up"
+            data-aos-delay={index * 150}
+            xs={12}
+            sm={8}
+            md={6}
+            lg={4}
+            key={tech.name}
+          >
             <Card className="tech-card" hoverable>
               <div className="tech-icon">{tech.icon}</div>
               <h3>{tech.name}</h3>

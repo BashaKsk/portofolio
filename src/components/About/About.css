@@ -24,17 +24,26 @@
 
 .stat-card {
   color: white !important; /* Ensure text color is white */
-
+  text-align: center !important;
   border-radius: 10px;
+  background-color: #242423 !important;
+  border: none !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+
 .stat-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* .stat-card:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease;
   transition-duration: 0.3s;
   transition-timing-function: ease;
   transition-delay: 0s;
-}
+} */
 
 .timeline-card {
   width: 100%;
@@ -43,4 +52,8 @@
   color: #f3f7f0 !important;
   border-radius: 10px;
   /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.statistic {
+  color: white !important;
 }
